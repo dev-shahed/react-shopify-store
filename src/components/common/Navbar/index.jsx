@@ -1,7 +1,8 @@
-import { Box, Button, Flex, Icon, Text } from "@chakra-ui/react";
+import { Badge, Box, Button, Flex, Icon, Image, Text } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
 import { MdClose, MdMenu, MdShoppingBasket } from "react-icons/md";
 import { Link } from "react-router-dom";
+import logo from "../../../assets/a1-logo-svg-vector.svg";
 import { ShopContext } from "../../../context/ShopContext";
 
 const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
@@ -10,6 +11,8 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
       mb={{ base: isLast ? 0 : 8, sm: 0 }}
       mr={{ base: 0, sm: isLast ? 0 : 8 }}
       display="block"
+      fontSize={18}
+      fontWeight={400}
       {...rest}
     >
       <Link to={to}>{children}</Link>
@@ -18,15 +21,15 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
 };
 
 const CloseIcon = () => (
-  <Icon cursor={"pointer"} fill={"blue.500"} w={30} h={30} as={MdMenu} />
+  <Icon cursor={"pointer"} fill={"green.400"} w={30} h={30} as={MdClose} />
 );
 
 const MenuIcon = () => (
-  <Icon cursor={"pointer"} fill={"blue.500"} w={30} h={30} as={MdClose} />
+  <Icon cursor={"pointer"} fill={"green.400"} w={30} h={30} as={MdMenu} />
 );
 
 const Navbar = (props) => {
-  const {openCart, openMenu, checkout} = useContext(ShopContext)
+  const { openCart, checkout} = useContext(ShopContext);
   const [show, setShow] = useState(false);
   const toggleMenu = () => setShow(!show);
 
@@ -37,21 +40,16 @@ const Navbar = (props) => {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      mb={8}
-      p={8}
+      mb={{ base: 8, md: 6 }}
+      px={8}
       bg={["primary.500", "primary.500", "transparent", "transparent"]}
       color={["black", "black", "primary.700", "primary.700"]}
       {...props}
     >
       <Flex align="center">
-        <Text
-          fontSize="lg"
-          fontWeight="bold"
-          w="100px"
-          color={["blue", "blue", "primary.500", "primary.500"]}
-        >
-          Logo
-        </Text>
+        <Link to="/">
+          <Image w={70} h={100} objectFit={'contain'} src={logo} />
+        </Link>
       </Flex>
 
       <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>
@@ -76,13 +74,12 @@ const Navbar = (props) => {
             <Button
               size="sm"
               rounded="md"
-              color={["primary.500", "primary.500", "white", "white"]}
-              bg={["blue", "blue", "primary.500", "primary.500"]}
+              _focus={"outline:0 !important"}
+              color={["primary.500","white"]}
+              bg={["green.400", "primary.500"]}
               _hover={{
                 bg: [
                   "primary.100",
-                  "primary.100",
-                  "primary.600",
                   "primary.600",
                 ],
               }}
@@ -91,7 +88,14 @@ const Navbar = (props) => {
             </Button>
           </MenuItem>
           <MenuItem isLast>
-        <Icon onClick={() => openCart()} fill={"blue.500"} as={MdShoppingBasket} w={30} h={30} />
+            <Icon
+              onClick={() => openCart()}
+              fill={"green.400"}
+              as={MdShoppingBasket}
+              w={30}
+              h={30}
+            />
+            <Badge background={'#ff6f00'} borderRadius={'50%'}>{checkout.lineItems?.length}</Badge>
           </MenuItem>
         </Flex>
       </Box>

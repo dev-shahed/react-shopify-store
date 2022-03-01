@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <SectionLayout>
-      <Grid templateColumns="repeat(3, 1fr)" gap={8}>
+      <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={8} rowGap={8}>
         {products.map((pd) => {
           return (
             <Link to={`/product/${pd.handle}`} key={pd.id}>

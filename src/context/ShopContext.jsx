@@ -65,12 +65,6 @@ class ShopProvider extends Component {
   openCart = async () => {
     this.setState({ isCartOpen: true });
   };
-  closeMenu = async () => {
-    this.setState({ isMenuOpen: false });
-  };
-  openMenu = async () => {
-    this.setState({ isMenuOpen: true });
-  };
 
   render() {
     return (
@@ -85,8 +79,6 @@ class ShopProvider extends Component {
           handleProduct: this.handleProduct,
           closeCart: this.closeCart,
           openCart: this.openCart,
-          closeMenu: this.closeMenu,
-          openMenu: this.openMenu,
         }}
       >
         {this.props.children}
