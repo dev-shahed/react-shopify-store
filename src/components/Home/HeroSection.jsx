@@ -9,7 +9,7 @@ export default function HeroSection() {
           as={Box}
           textAlign={"center"}
           spacing={{ base: 4, md: 8 }}
-          py={{ base: 10, md: 16 }}
+          py={{ base: 6, md: 16 }}
         >
           <Heading
             fontWeight={600}

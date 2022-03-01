@@ -16,6 +16,7 @@ import {
 import React, { useContext } from "react";
 import { MdClose } from "react-icons/md";
 import { ShopContext } from "../../../context/ShopContext";
+import { GreenBtn } from "../Buttons";
 
 const Cart = () => {
   const { isCartOpen, closeCart, checkout, removeLineItem } =
@@ -55,7 +56,7 @@ const Cart = () => {
             <Button variant="outline" mr={3} onClick={closeCart}>
               Cancel
             </Button>
-            {cartItem ? <Button colorScheme="blue"> <Link href={checkout.webUrl}>Checkout</Link></Button> : null}
+            {cartItem ? <GreenBtn colorScheme="blue"> <Link href={checkout.webUrl}>Checkout</Link></GreenBtn> : null}
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
