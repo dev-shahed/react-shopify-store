@@ -15,6 +15,8 @@ const Product = () => {
   useEffect(() => {
     handleProduct(handle);
   }, [handleProduct]);
+
+
   if (!product.title) return <div>Loading</div>;
   return (
     <Box p={"2rem"} id='shop'>

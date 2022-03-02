@@ -1,8 +1,30 @@
-import { Box, Grid, Image, Text } from "@chakra-ui/react";
+import { Box, Grid, Image, Skeleton, Text } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext";
 import SectionLayout from "../layouts/sectionLayout";
+
+function ProdsListSkeleton() {
+  const fakeArr = new Array(30).fill(0);
+  return (
+    <SectionLayout>
+      <Grid
+        templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
+        gap={8}
+        overflow={'hidden'}
+        mx="auto"
+      >
+        {fakeArr.map((item, index) => (
+          <Box key={index}>
+            <Skeleton w={360} h={400}>
+              {item}
+            </Skeleton>
+          </Box>
+        ))}
+      </Grid>
+    </SectionLayout>
+  );
+}
 
 const Home = () => {
   const { fetchAllProducts, products } = useContext(ShopContext);
@@ -13,18 +35,28 @@ const Home = () => {
 
   return (
     <SectionLayout>
-      <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]} gap={8} rowGap={8}>
-        {products.map((pd) => {
-          return (
-            <Link to={`/product/${pd.handle}`} key={pd.id}>
-              <Box _hover={{opacity: "80%"}} textAlign='center'>
-                <Image src={pd.images[0].src} alt={pd.title}></Image>
-                <Text>{pd.title}</Text>
-                <Text>{pd.variants[0].price}</Text>
-              </Box>
-            </Link>
-          );
-        })}
+      <Grid
+        templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
+        gap={8}
+        rowGap={8}
+      >
+        {products.length ? (
+          products.map((pd) => {
+            return (
+              <Link to={`/product/${pd.handle}`} key={pd.id}>
+                <Box _hover={{ opacity: "80%" }} textAlign="center">
+                  <Image src={pd.images[0].src} alt={pd.title}></Image>
+                  <Text fontSize={18} fontWeight={500}>
+                    {pd.title}
+                  </Text>
+                  <Text fontWeight={700}> ${pd.variants[0].price}</Text>
+                </Box>
+              </Link>
+            );
+          })
+        ) : (
+          <ProdsListSkeleton />
+        )}
       </Grid>
     </SectionLayout>
   );
