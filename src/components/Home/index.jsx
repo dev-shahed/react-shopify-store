@@ -12,7 +12,8 @@ function ProdsListSkeleton() {
         templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
         gap={8}
         overflow={'hidden'}
-        mx="auto"
+        alignItems='center'
+        
       >
         {fakeArr.map((item, index) => (
           <Box key={index}>
