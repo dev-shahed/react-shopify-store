@@ -42,13 +42,14 @@ const Navbar = (props) => {
       w="100%"
       mb={{ base: 8, md: 6 }}
       px={8}
+      py={5}
       bg={["primary.500", "primary.500", "transparent", "transparent"]}
       color={["black", "black", "primary.700", "primary.700"]}
       {...props}
     >
       <Flex align="center">
         <Link to="/">
-          <Image w={70} h={100} objectFit={'contain'} src={logo} />
+          <Image maxW={70} maxH={100} objectFit={'fill'} src={logo} />
         </Link>
       </Flex>
 

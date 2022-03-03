@@ -1,4 +1,5 @@
 import { Box, Container, Heading, Stack, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { GreenBtn } from "../common/Buttons";
 
 export default function HeroSection() {
@@ -16,10 +17,12 @@ export default function HeroSection() {
             fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
           >
-            We’re in Business <br />
-            <Text as={"span"} color={"green.400"}>
-              to Improve Lives
-            </Text>
+            <motion.div animate={{ scale: 1.2 }} transition={{ duration: 0.5 }}>
+              We’re in Business <br />
+              <Text as={"span"} color={"green.400"}>
+                to Improve Lives
+              </Text>
+            </motion.div>
           </Heading>
           <Text color={"gray.500"}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
