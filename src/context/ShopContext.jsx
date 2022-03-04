@@ -12,7 +12,6 @@ class ShopProvider extends Component {
     products: [],
     checkout: {},
     isCartOpen: false,
-    isMenuOpen: false,
   };
 
   componentDidMount() {
