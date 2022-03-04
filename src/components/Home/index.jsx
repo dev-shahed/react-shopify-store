@@ -11,11 +11,11 @@ function ProdsListSkeleton() {
     <Box>
       <Grid
         templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
-        gap={8} 
+        gap={8} justifyContent={'center'}
       >
         {fakeArr.map((item, index) => (
           <Box key={index}>
-            <Skeleton w={'27vw'} h={400}>
+            <Skeleton w={350} h={400}>
               {item}
             </Skeleton>
           </Box>
