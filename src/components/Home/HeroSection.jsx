@@ -4,7 +4,7 @@ import { GreenBtn } from "../common/Buttons";
 
 export default function HeroSection() {
   return (
-    <Box>
+    <Box overflow={'hidden'}>
       <Container maxW={"3xl"}>
         <Stack
           as={Box}
