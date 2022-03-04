@@ -3,9 +3,7 @@ import {
   Flex,
   Grid,
   Heading,
-  Image,
-  Skeleton,
-  Text
+  Image, Text
 } from "@chakra-ui/react";
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -18,21 +16,20 @@ const Product = () => {
 
   useEffect(() => {
     handleProduct(handle);
-  }, [handleProduct]);
+  }, [handleProduct, product]);
 
   function ProductSkeleton() {
     return (
-      <Grid p={'30px'} templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} gap={10}>
-        <Skeleton w={'40vw'} h={500}>
-        </Skeleton>
-        <Skeleton mt={'8%'} w={'50vw'} h={400}>
-        </Skeleton>
-      </Grid>
+      <Flex justifyContent={"center"} alignItems="center" w="full" h='60vh'>
+        <Text fontWeight={600} fontSize={{ base: "md", sm: "xl", md: "2xl" }}>
+          Loading....
+        </Text>
+      </Flex>
     );
   }
   return (
     <SectionLayout>
-      {product.title ? (
+      {product.title && product.title ? (
         <Grid m={"auto"} templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}>
           <Flex justifyContent={"center"} alignItems={"center"}>
             <Image

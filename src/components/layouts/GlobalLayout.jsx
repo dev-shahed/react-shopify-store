@@ -7,7 +7,7 @@ const GlobalLayout = ({ children }) => {
   return (
     <Fragment>
       <Navbar />
-      <Cart/>
+      <Cart />
       <main>{children}</main>
       <Footer />
     </Fragment>

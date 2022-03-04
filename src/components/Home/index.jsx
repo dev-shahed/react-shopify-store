@@ -4,26 +4,24 @@ import { Link } from "react-router-dom";
 import { ShopContext } from "../../context/ShopContext";
 import SectionLayout from "../layouts/sectionLayout";
 
+
 function ProdsListSkeleton() {
   const fakeArr = new Array(30).fill(0);
   return (
-    <SectionLayout>
+    <Box>
       <Grid
         templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
-        gap={8}
-        overflow={'hidden'}
-        alignItems='center'
-        
+        gap={8} 
       >
         {fakeArr.map((item, index) => (
           <Box key={index}>
-            <Skeleton w={360} h={400}>
+            <Skeleton w={'27vw'} h={400}>
               {item}
             </Skeleton>
           </Box>
         ))}
       </Grid>
-    </SectionLayout>
+    </Box>
   );
 }
 
@@ -36,10 +34,10 @@ const Home = () => {
 
   return (
     <SectionLayout>
-      <Grid
-        templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
-        gap={8}
+      <Grid 
         
+        templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)"]}
+        gap={8} 
       >
         {products.length ? (
           products.map((pd) => {
