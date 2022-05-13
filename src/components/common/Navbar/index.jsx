@@ -68,8 +68,8 @@ const Navbar = (props) => {
           pt={[4, 4, 0, 0]}
         >
           <MenuItem to="/">Home</MenuItem>
-          <MenuItem to="/">Product </MenuItem>
-          <MenuItem to="/">Categories </MenuItem>
+          <MenuItem to="#">Product </MenuItem>
+          <MenuItem to="#">Categories </MenuItem>
           <MenuItem to="/">Pricing </MenuItem>
           <MenuItem to="/">
             <Button
